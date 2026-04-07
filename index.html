@@ -2,159 +2,152 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NUMBER46 | コンセプトカフェ 新宿歌舞伎町</title>
-
-<!-- Fonts -->
 <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
 <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-<link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500&display=swap)" rel="stylesheet">
+<link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400;500&family=Shippori+Mincho:wght@300;400;500;600&display=swap)" rel="stylesheet">
 
 <style>
 :root {
-  --tiffany:#7DCFCA;
-  --tiffany-mid:#5BBFB9;
-  --tiffany-dark:#3DA8A1;
-  --tiffany-pale:#E4F5F4;
-  --tiffany-ultra:#F2FAFA;
-  --pink-pale:#FDF0F3;
-  --white:#fff;
-  --text-dark:#1C2B2A;
-  --text-mid:#3D5654;
-  --shadow:0 0 30px rgba(255,255,255,0.2);
-  --radius:16px;
+--tiffany:#7DCFCA;
+--tiffany-mid:#5BBFB9;
+--tiffany-dark:#3DA8A1;
+--tiffany-light:#A8DDD9;
+--tiffany-pale:#E4F5F4;
+--tiffany-ultra:#F2FAFA;
+--pink-pale:#FDF0F3;
+--white:#FFFFFF;
+--text-dark:#1C2B2A;
+--text-mid:#3D5654;
+--text-light:#7A9C99;
+--text-xlight:#B0CECA;
+--border:rgba(125,207,202,0.25);
+--border-mid:rgba(125,207,202,0.45);
+--shadow-sm:0 4px 20px rgba(61,168,161,0.1);
+--shadow:0 8px 40px rgba(61,168,161,0.13);
+--shadow-lg:0 20px 60px rgba(61,168,161,0.16);
+--radius:16px;
+--radius-sm:10px;
 }
-*,*:before,*:after{box-sizing:border-box;margin:0;padding:0;}
+
+/* 基本リセット */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
   font-family:'Noto Serif JP',serif;
-  background:radial-gradient(circle at 30% 30%, #fff 0%, #f9ffff 100%);
+  background:var(--white);
   color:var(--text-dark);
   overflow-x:hidden;
-  position:relative;
   -webkit-font-smoothing:antialiased;
+  position:relative;
 }
-/* ===== glitter overlay ===== */
-body::before {
-  content:'';
+
+/* ==== ✨ キラキラ背景層 ==== */
+body::before{
+  content:"";
   position:fixed;
   inset:0;
+  z-index:0;
   pointer-events:none;
   background-image:
     radial-gradient(circle,rgba(255,255,255,0.4) 1px,transparent 1px),
     radial-gradient(circle,rgba(255,255,255,0.3) 1px,transparent 1px);
   background-size:160px 160px,120px 120px;
-  animation:glitters 40s linear infinite;
-  opacity:0.7;
+  animation:glitterMove 60s linear infinite;
+  opacity:0.5;
 }
-@keyframes glitters {
+@keyframes glitterMove{
   0%{background-position:0 0,0 0;}
   100%{background-position:800px 600px,400px 300px;}
 }
-/* ===== age gate, nav, hero, section basics ===== */
-#age-gate {
-  position:fixed;inset:0;
-  background:rgba(20,40,38,.75);
-  backdrop-filter:blur(12px);
-  z-index:9999;
-  display:flex;align-items:center;justify-content:center;
-  transition:opacity .5s;
-}
-.age-card {
-  background:white;
-  border-radius:24px;
-  padding:52px 40px;
-  text-align:center;
-  box-shadow:0 20px 60px rgba(0,0,0,.25);
-}
-.age-logo{
-  font-family:'Cormorant Garamond',serif;
-  font-size:2rem;letter-spacing:.1em;
-}
+
+/* ======== ここから元デザイン（CAST削除対応済） ======== */
+/* スクロールバーなど既存設定 */
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--tiffany-ultra);}
+::-webkit-scrollbar-thumb{background:var(--tiffany);border-radius:2px;}
+
+/* --- AGE GATE --- */
+#age-gate{position:fixed;inset:0;background:rgba(20,40,38,0.65);backdrop-filter:blur(12px);
+z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;
+transition:opacity 0.5s;}
+.age-card{background:#fff;border-radius:24px;padding:52px 40px 44px;
+max-width:400px;width:100%;text-align:center;box-shadow:0 32px 80px rgba(0,0,0,0.2);}
+.age-logo{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;
+letter-spacing:0.08em;color:var(--text-dark);margin-bottom:4px;}
 .age-logo span{color:var(--tiffany-mid);}
-.age-sub{font-size:.8rem;color:var(--text-mid);margin-bottom:32px;}
-.age-text{font-size:.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:36px;}
+.age-sub{font-size:0.72rem;letter-spacing:0.25em;color:var(--text-light);margin-bottom:32px;}
+.age-text{font-size:0.88rem;line-height:1.9;color:var(--text-mid);letter-spacing:0.04em;margin-bottom:36px;}
 .age-btns{display:flex;gap:12px;}
-.age-btns button{
-  flex:1;border:none;padding:14px 20px;border-radius:50px;
-  font-family:'Noto Serif JP',serif;
-  letter-spacing:.1em;font-size:.85rem;cursor:pointer;
-  transition:.3s;
-}
-.age-yes{background:var(--tiffany-mid);color:#fff;}
+.age-yes{flex:1;background:var(--tiffany-mid);color:#fff;border:none;border-radius:50px;
+padding:15px 20px;font-size:0.85rem;letter-spacing:0.1em;cursor:pointer;transition:all 0.3s;}
 .age-yes:hover{background:var(--tiffany-dark);}
-.age-no{background:#eee;color:#888;}
-.age-no:hover{background:#ddd;}
-nav{
-  position:fixed;top:0;left:0;right:0;height:60px;
-  backdrop-filter:blur(20px);
-  background:rgba(255,255,255,.9);
-  border-bottom:1px solid rgba(125,207,202,.3);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 24px;z-index:900;
-}
-.nav-logo{
-  font-family:'Cormorant Garamond',serif;
-  text-decoration:none;font-size:1.4rem;color:var(--text-dark);
-}
+.age-no{flex:1;background:#f3f4f6;color:#9ca3af;border:none;border-radius:50px;padding:15px 20px;
+font-size:0.85rem;letter-spacing:0.1em;cursor:pointer;transition:all 0.3s;}
+.age-no:hover{background:#e5e7eb;}
+
+/* --- NAV --- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
+background:rgba(255,255,255,0.93);backdrop-filter:blur(20px);
+border-bottom:1px solid var(--border);padding:0 20px;height:60px;
+display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;
+letter-spacing:0.1em;color:var(--text-dark);text-decoration:none;}
 .nav-logo span{color:var(--tiffany-mid);}
-.nav-links{display:flex;gap:20px;list-style:none;}
-.nav-links a{
-  text-decoration:none;font-size:.8rem;color:var(--text-mid);
-  letter-spacing:.1em;
-}
+.nav-right{display:flex;align-items:center;gap:20px;}
+.nav-links{display:flex;gap:22px;list-style:none;}
+.nav-links a{font-size:0.7rem;letter-spacing:0.15em;color:var(--text-mid);
+text-decoration:none;transition:color 0.3s;}
 .nav-links a:hover{color:var(--tiffany-dark);}
-#hero{
-  min-height:100vh;
-  display:flex;flex-direction:column;
-  justify-content:center;align-items:center;
-  padding:80px 24px;
-  text-align:center;
-  background:linear-gradient(160deg,#fff 0%,#F5FBFB 50%,var(--tiffany-pale) 100%);
-  position:relative;
-  overflow:hidden;
-}
+.nav-btn{background:var(--tiffany-mid);color:white;border:none;border-radius:50px;
+padding:9px 20px;font-size:0.75rem;letter-spacing:0.1em;cursor:pointer;text-decoration:none;
+transition:all 0.3s;white-space:nowrap;}
+.nav-btn:hover{background:var(--tiffany-dark);transform:translateY(-1px);}
+@media(max-width:640px){.nav-links{display:none;}}
+
+/* --- HERO --- */
+#hero{min-height:100vh;padding-top:60px;background:
+linear-gradient(160deg,#FFFFFF 0%,#F5FBFB 50%,var(--tiffany-pale) 100%);
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+position:relative;overflow:hidden;text-align:center;padding-left:24px;padding-right:24px;}
 .orb{position:absolute;border-radius:50%;pointer-events:none;}
-.orb1{width:600px;height:600px;top:-150px;right:-150px;background:radial-gradient(circle,rgba(125,207,202,0.15) 0%,transparent 70%);}
-.orb2{width:400px;height:400px;bottom:-80px;left:-80px;background:radial-gradient(circle,rgba(249,215,227,0.2) 0%,transparent 70%);}
+.orb1{width:600px;height:600px;top:-150px;right:-150px;
+background:radial-gradient(circle,rgba(125,207,202,0.1) 0%,transparent 70%);}
+.orb2{width:400px;height:400px;bottom:-80px;left:-80px;
+background:radial-gradient(circle,rgba(125,207,202,0.08) 0%,transparent 70%);}
+.orb3{width:200px;height:200px;top:30%;left:5%;
+background:radial-gradient(circle,rgba(249,215,227,0.35) 0%,transparent 70%);}
 
-.hero-catch{
-  font-family:'Noto Serif JP',serif;
-  font-size:clamp(2rem,6vw,3rem);
-  letter-spacing:.15em;color:var(--text-dark);margin-bottom:18px;
-}
-.hero-sub{color:var(--text-mid);letter-spacing:.08em;margin-bottom:40px;}
-button,a.btn-main{
-  display:inline-block;padding:15px 32px;border-radius:50px;
-  text-decoration:none;letter-spacing:.1em;font-size:.88rem;
-  transition:.3s;
-}
-.btn-main{background:var(--tiffany-mid);color:#fff;}
-.btn-main:hover{background:var(--tiffany-dark);transform:translateY(-2px);}
-section{padding:80px 24px;}
-.section-label{color:var(--tiffany-mid);letter-spacing:.2em;font-size:.8rem;margin-bottom:6px;text-transform:uppercase;}
-.section-title{font-family:'Noto Serif JP',serif;font-size:2rem;letter-spacing:.08em;margin-bottom:10px;}
-.section-desc{color:var(--text-mid);line-height:2;font-size:.9rem;}
-footer{background:#1C2B2A;color:#aaa;text-align:center;padding:40px 0;font-size:.8rem;}
-
-.fadein{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
-.fadein.show{opacity:1;transform:translateY(0);}
+.hero-catch{font-family:'Noto Serif JP',serif;
+font-size:clamp(2.1rem,8vw,3.2rem);font-weight:300;letter-spacing:0.15em;
+color:var(--text-dark);margin-bottom:18px;line-height:1.3;z-index:2;position:relative;}
+.hero-sub{font-size:0.9rem;letter-spacing:0.08em;color:var(--text-mid);
+line-height:2;margin-bottom:6px;z-index:2;position:relative;}
+.hero-sub strong{color:var(--tiffany-dark);font-weight:400;}
+.hero-sub2{font-size:0.84rem;letter-spacing:0.08em;
+color:var(--text-light);margin-bottom:40px;z-index:2;position:relative;}
 </style>
 </head>
 <body>
 
-<!-- 🎵 常時ループ・控えめ音量 -->
-<audio id="bgm" src="[drive.google.com](https://drive.google.com/uc?export=download&id=1bdK8MvJmHhBz2u_9pQQmsS9G55B-HVEM)" autoplay loop></audio>
+<!-- 🎵 BGM（奇麗にループ・音量0.25・クリック後再生保障） -->
+<audio id="bgm"
+  src="[drive.google.com](https://drive.google.com/uc?export=download&id=1bdK8MvJmHhBz2u_9pQQmsS9G55B-HVEM)"
+  autoplay loop></audio>
 <script>
-document.addEventListener('click',()=>{const b=document.getElementById('bgm');if(b.paused){b.volume=0.25;b.play();}});
+document.addEventListener("click",()=>{
+  const bgm=document.getElementById("bgm");
+  if(bgm.paused){bgm.volume=0.25;bgm.play();}
+});
 </script>
 
-<!-- AGE GATE -->
+<!-- ===== AGE GATE ===== -->
 <div id="age-gate">
   <div class="age-card">
     <div class="age-logo">NUMBER<span>46</span></div>
     <div class="age-sub">よんろくっ ｜ 新宿歌舞伎町</div>
-    <p class="age-text">当店のウェブサイトをご覧いただくには18歳以上である必要があります。<br>あなたは18歳以上ですか？</p>
+    <p class="age-text">当店のウェブサイトをご覧いただくには、18歳以上である必要があります。<br>あなたは18歳以上ですか？</p>
     <div class="age-btns">
       <button class="age-yes" onclick="closeAgeGate()">はい、18歳以上です</button>
       <button class="age-no" onclick="location.href='[google.com](https://www.google.com)'">いいえ</button>
@@ -162,76 +155,113 @@ document.addEventListener('click',()=>{const b=document.getElementById('bgm');if
   </div>
 </div>
 
-<!-- NAV -->
+<!-- ===== NAV ===== -->
 <nav>
   <a href="#hero" class="nav-logo">NUMBER<span>46</span></a>
-  <ul class="nav-links">
-    <li><a href="#concept">CONCEPT</a></li>
-    <li><a href="#plan">PLAN</a></li>
-    <li><a href="#access">ACCESS</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#concept">CONCEPT</a></li>
+      <li><a href="#plan">PLAN</a></li>
+      <li><a href="#access">ACCESS</a></li>
+    </ul>
+    <a href="[instagram.com](https://www.instagram.com/conceptcafe_46)" target="_blank" class="nav-btn">予約する</a>
+  </div>
 </nav>
 
-<!-- HERO -->
+<!-- ===== HERO ===== -->
 <section id="hero">
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <div class="hero-logo-box fi">
+    <div class="logo-placeholder">
+      <div class="lt">NUMBER<span>46</span></div>
+      <div class="ls">CONCEPT CAFE SHINJUKU</div>
+    </div>
+  </div>
+
   <h1 class="hero-catch">新宿で、心躍るひとときを。</h1>
   <p class="hero-sub">コンセプトカフェ <strong>NUMBER46</strong> へようこそ。</p>
-  <a href="#concept" class="btn-main">CONCEPTを見る</a>
 </section>
 
-<!-- CONCEPT -->
-<section id="concept" class="fadein">
+<!-- ===== CONCEPT ===== -->
+<section id="concept">
   <div class="section-label">CONCEPT</div>
   <h2 class="section-title">誰もが特別な時間を過ごせる空間</h2>
-  <p class="section-desc">NUMBER46は新宿・歌舞伎町にあるコンセプトカフェ。<br>
-  落ち着いた内装と幻想的な照明、そしてスタッフ達のおもてなしで、<br>
-  夜の都会に優しく輝く癒しの時間をお届けします。</p>
+  <p class="section-desc">NUMBER46は、新宿・歌舞伎町にあるコンセプトカフェ。<br>
+  落ち着いたデザイン、上品な照明、そして心を解きほぐすおもてなしで、<br>
+  日常を忘れる特別な体験をお届けします。</p>
 </section>
 
-<!-- PLAN -->
-<section id="plan" class="fadein">
+<!-- ===== PLAN ===== -->
+<section id="plan">
   <div class="section-label">PLAN</div>
   <h2 class="section-title">SYSTEM</h2>
-  <p class="section-desc">くつろぎながら楽しめる通常プランと、<br>
-  特別な時間を演出するプレミアムプランをご用意。</p>
+  <p class="section-desc">お客様一人ひとりに合わせた、多彩なプランをご用意しております。</p>
 </section>
 
-<!-- SNS -->
-<section id="sns" class="fadein">
+<!-- ===== SNS（Xリンク修正版） ===== -->
+<section id="sns">
   <div class="section-label">SNS</div>
   <h2 class="section-title">Follow Us</h2>
-  <p class="section-desc">
-    📸 <a href="[instagram.com](https://www.instagram.com/conceptcafe_46)" target="_blank">Instagram</a><br>
-    🕊 <a href="[twitter.com](https://twitter.com/NUMBER46_TOKYO)" target="_blank">X（旧Twitter）</a>
-  </p>
+  <div class="sns-list">
+    <a href="[instagram.com](https://www.instagram.com/conceptcafe_46)" target="_blank" class="sns-card sns-ig">
+      <div class="sns-top">
+        <div class="sns-icon"></div>
+        <div>
+          <div class="sns-pname">Instagram</div>
+          <div class="sns-handle">@conceptcafe_46</div>
+        </div>
+      </div>
+      <div class="sns-body">最新のイベントやキャスト情報をお届けしています。</div>
+    </a>
+
+    <a href="[twitter.com](https://twitter.com/NUMBER46_TOKYO)" target="_blank" class="sns-card sns-tw">
+      <div class="sns-top">
+        <div class="sns-icon"></div>
+        <div>
+          <div class="sns-pname">X（旧Twitter）</div>
+          <div class="sns-handle">@NUMBER46_TOKYO</div>
+        </div>
+      </div>
+      <div class="sns-body">イベント情報、お得なニュースを発信中。</div>
+    </a>
+  </div>
 </section>
 
-<!-- ACCESS -->
-<section id="access" class="fadein">
+<!-- ===== ACCESS ===== -->
+<section id="access">
   <div class="section-label">ACCESS</div>
   <h2 class="section-title">アクセス</h2>
   <p class="section-desc">東京都新宿区歌舞伎町 — JR新宿駅東口より徒歩5分</p>
 </section>
 
-<!-- CTA -->
-<section id="reserve-cta" class="fadein" style="background:linear-gradient(160deg,var(--tiffany-mid),var(--tiffany-dark));text-align:center;color:white;padding:80px 24px;">
-  <h2 style="font-weight:300;letter-spacing:0.1em;">ご来店・ご予約はこちらから</h2>
-  <p style="opacity:.8;margin-bottom:38px;">Reserve your seat at NUMBER46</p>
-  <a href="[instagram.com](https://www.instagram.com/conceptcafe_46)" target="_blank" class="btn-main" style="background:white;color:var(--tiffany-dark);box-shadow:0 0 20px rgba(255,255,255,0.3);">予約する</a>
+<!-- ===== CTA ===== -->
+<section id="reserve-cta">
+  <h2 class="cta-title">ご来店・ご予約はこちらから</h2>
+  <p class="cta-sub">Reserve your seat at NUMBER46</p>
+  <a href="[instagram.com](https://www.instagram.com/conceptcafe_46)" class="btn-white" target="_blank">予約する</a>
 </section>
 
-<footer>© NUMBER46 2024</footer>
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="f-logo">NUMBER<span>46</span></div>
+  <div class="f-addr">東京都新宿区歌舞伎町 — Concept Café NUMBER46</div>
+  <div class="f-copy">© NUMBER46</div>
+</footer>
 
 <script>
 function closeAgeGate(){
   document.getElementById("age-gate").style.display="none";
 }
-const els=document.querySelectorAll('.fadein');
-const io=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting)t.target.classList.add('show');});});
-els.forEach(x=>io.observe(x));
-</script>
 
+// フェードイン表示
+const fiEls=document.querySelectorAll('.fi');
+const io=new IntersectionObserver(e=>{
+  e.forEach(t=>{if(t.isIntersecting)t.target.classList.add('show');});
+});
+fiEls.forEach(x=>io.observe(x));
+</script>
 </body>
 </html>
