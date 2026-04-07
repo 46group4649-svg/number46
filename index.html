@@ -2,76 +2,235 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>NUMBER46 | コンセプトカフェ 新宿歌舞伎町</title>
+
+<!-- Fonts -->
 <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
 <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-<link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+JP:wght@300;400;500&display=swap)" rel="stylesheet">
+<link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500&display=swap)" rel="stylesheet">
 
 <style>
-body {
-  font-family: 'Noto Serif JP', serif;
-  margin: 0;
-  background: #ffffff;
-  color: #1C2B2A;
+:root {
+  --tiffany:#7DCFCA;
+  --tiffany-mid:#5BBFB9;
+  --tiffany-dark:#3DA8A1;
+  --tiffany-pale:#E4F5F4;
+  --tiffany-ultra:#F2FAFA;
+  --pink-pale:#FDF0F3;
+  --white:#fff;
+  --text-dark:#1C2B2A;
+  --text-mid:#3D5654;
+  --shadow:0 0 30px rgba(255,255,255,0.2);
+  --radius:16px;
 }
-/*軽くデザイン簡略バージョン例*/
-h1 { font-size: 2rem; margin-top: 80px; text-align: center; letter-spacing: .15em; }
-section { padding: 60px 24px; max-width: 800px; margin: auto; }
-footer { text-align: center; padding: 40px 0; color: #7A9C99; font-size: 0.8rem; }
-a { color: #3DA8A1; text-decoration: none; }
+*,*:before,*:after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Serif JP',serif;
+  background:radial-gradient(circle at 30% 30%, #fff 0%, #f9ffff 100%);
+  color:var(--text-dark);
+  overflow-x:hidden;
+  position:relative;
+  -webkit-font-smoothing:antialiased;
+}
+/* ===== glitter overlay ===== */
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,0.4) 1px,transparent 1px),
+    radial-gradient(circle,rgba(255,255,255,0.3) 1px,transparent 1px);
+  background-size:160px 160px,120px 120px;
+  animation:glitters 40s linear infinite;
+  opacity:0.7;
+}
+@keyframes glitters {
+  0%{background-position:0 0,0 0;}
+  100%{background-position:800px 600px,400px 300px;}
+}
+/* ===== age gate, nav, hero, section basics ===== */
+#age-gate {
+  position:fixed;inset:0;
+  background:rgba(20,40,38,.75);
+  backdrop-filter:blur(12px);
+  z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .5s;
+}
+.age-card {
+  background:white;
+  border-radius:24px;
+  padding:52px 40px;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+.age-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem;letter-spacing:.1em;
+}
+.age-logo span{color:var(--tiffany-mid);}
+.age-sub{font-size:.8rem;color:var(--text-mid);margin-bottom:32px;}
+.age-text{font-size:.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:36px;}
+.age-btns{display:flex;gap:12px;}
+.age-btns button{
+  flex:1;border:none;padding:14px 20px;border-radius:50px;
+  font-family:'Noto Serif JP',serif;
+  letter-spacing:.1em;font-size:.85rem;cursor:pointer;
+  transition:.3s;
+}
+.age-yes{background:var(--tiffany-mid);color:#fff;}
+.age-yes:hover{background:var(--tiffany-dark);}
+.age-no{background:#eee;color:#888;}
+.age-no:hover{background:#ddd;}
+nav{
+  position:fixed;top:0;left:0;right:0;height:60px;
+  backdrop-filter:blur(20px);
+  background:rgba(255,255,255,.9);
+  border-bottom:1px solid rgba(125,207,202,.3);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;z-index:900;
+}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  text-decoration:none;font-size:1.4rem;color:var(--text-dark);
+}
+.nav-logo span{color:var(--tiffany-mid);}
+.nav-links{display:flex;gap:20px;list-style:none;}
+.nav-links a{
+  text-decoration:none;font-size:.8rem;color:var(--text-mid);
+  letter-spacing:.1em;
+}
+.nav-links a:hover{color:var(--tiffany-dark);}
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  padding:80px 24px;
+  text-align:center;
+  background:linear-gradient(160deg,#fff 0%,#F5FBFB 50%,var(--tiffany-pale) 100%);
+  position:relative;
+  overflow:hidden;
+}
+.orb{position:absolute;border-radius:50%;pointer-events:none;}
+.orb1{width:600px;height:600px;top:-150px;right:-150px;background:radial-gradient(circle,rgba(125,207,202,0.15) 0%,transparent 70%);}
+.orb2{width:400px;height:400px;bottom:-80px;left:-80px;background:radial-gradient(circle,rgba(249,215,227,0.2) 0%,transparent 70%);}
+
+.hero-catch{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(2rem,6vw,3rem);
+  letter-spacing:.15em;color:var(--text-dark);margin-bottom:18px;
+}
+.hero-sub{color:var(--text-mid);letter-spacing:.08em;margin-bottom:40px;}
+button,a.btn-main{
+  display:inline-block;padding:15px 32px;border-radius:50px;
+  text-decoration:none;letter-spacing:.1em;font-size:.88rem;
+  transition:.3s;
+}
+.btn-main{background:var(--tiffany-mid);color:#fff;}
+.btn-main:hover{background:var(--tiffany-dark);transform:translateY(-2px);}
+section{padding:80px 24px;}
+.section-label{color:var(--tiffany-mid);letter-spacing:.2em;font-size:.8rem;margin-bottom:6px;text-transform:uppercase;}
+.section-title{font-family:'Noto Serif JP',serif;font-size:2rem;letter-spacing:.08em;margin-bottom:10px;}
+.section-desc{color:var(--text-mid);line-height:2;font-size:.9rem;}
+footer{background:#1C2B2A;color:#aaa;text-align:center;padding:40px 0;font-size:.8rem;}
+
+.fadein{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+.fadein.show{opacity:1;transform:translateY(0);}
 </style>
 </head>
-
 <body>
 
-<!-- 🎵控えめ音量のBGM -->
+<!-- 🎵 常時ループ・控えめ音量 -->
 <audio id="bgm" src="[drive.google.com](https://drive.google.com/uc?export=download&id=1bdK8MvJmHhBz2u_9pQQmsS9G55B-HVEM)" autoplay loop></audio>
 <script>
-document.addEventListener('click', function() {
-  const bgm = document.getElementById('bgm');
-  if (bgm.paused) { bgm.volume = 0.25; bgm.play(); }
-});
+document.addEventListener('click',()=>{const b=document.getElementById('bgm');if(b.paused){b.volume=0.25;b.play();}});
 </script>
 
+<!-- AGE GATE -->
+<div id="age-gate">
+  <div class="age-card">
+    <div class="age-logo">NUMBER<span>46</span></div>
+    <div class="age-sub">よんろくっ ｜ 新宿歌舞伎町</div>
+    <p class="age-text">当店のウェブサイトをご覧いただくには18歳以上である必要があります。<br>あなたは18歳以上ですか？</p>
+    <div class="age-btns">
+      <button class="age-yes" onclick="closeAgeGate()">はい、18歳以上です</button>
+      <button class="age-no" onclick="location.href='[google.com](https://www.google.com)'">いいえ</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">NUMBER<span>46</span></a>
+  <ul class="nav-links">
+    <li><a href="#concept">CONCEPT</a></li>
+    <li><a href="#plan">PLAN</a></li>
+    <li><a href="#access">ACCESS</a></li>
+  </ul>
+</nav>
+
 <!-- HERO -->
-<h1>NUMBER46<br>コンセプトカフェ 新宿歌舞伎町</h1>
-<section>
-  <h2>CONCEPT</h2>
-  <p>NUMBER46は、新宿・歌舞伎町の新しいコンセプトカフェ。<br>
-     落ち着いた空間と心地よい音楽で、特別な時間をお楽しみください。</p>
+<section id="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <h1 class="hero-catch">新宿で、心躍るひとときを。</h1>
+  <p class="hero-sub">コンセプトカフェ <strong>NUMBER46</strong> へようこそ。</p>
+  <a href="#concept" class="btn-main">CONCEPTを見る</a>
 </section>
 
-<section>
-  <h2>PLAN</h2>
-  <p>さまざまなシーンに合わせてプランをご用意しています。</p>
+<!-- CONCEPT -->
+<section id="concept" class="fadein">
+  <div class="section-label">CONCEPT</div>
+  <h2 class="section-title">誰もが特別な時間を過ごせる空間</h2>
+  <p class="section-desc">NUMBER46は新宿・歌舞伎町にあるコンセプトカフェ。<br>
+  落ち着いた内装と幻想的な照明、そしてスタッフ達のおもてなしで、<br>
+  夜の都会に優しく輝く癒しの時間をお届けします。</p>
 </section>
 
-<section>
-  <h2>SNS</h2>
-  <p>
+<!-- PLAN -->
+<section id="plan" class="fadein">
+  <div class="section-label">PLAN</div>
+  <h2 class="section-title">SYSTEM</h2>
+  <p class="section-desc">くつろぎながら楽しめる通常プランと、<br>
+  特別な時間を演出するプレミアムプランをご用意。</p>
+</section>
+
+<!-- SNS -->
+<section id="sns" class="fadein">
+  <div class="section-label">SNS</div>
+  <h2 class="section-title">Follow Us</h2>
+  <p class="section-desc">
     📸 <a href="[instagram.com](https://www.instagram.com/conceptcafe_46)" target="_blank">Instagram</a><br>
-    🕊 <a href="[twitter.com](https://twitter.com/NUMBER46_TOKYO)" target="_blank">X (旧Twitter)</a>
+    🕊 <a href="[twitter.com](https://twitter.com/NUMBER46_TOKYO)" target="_blank">X（旧Twitter）</a>
   </p>
 </section>
 
-<section>
-  <h2>ACCESS</h2>
-  <p>東京都新宿区歌舞伎町 — JR新宿駅東口より徒歩5分</p>
+<!-- ACCESS -->
+<section id="access" class="fadein">
+  <div class="section-label">ACCESS</div>
+  <h2 class="section-title">アクセス</h2>
+  <p class="section-desc">東京都新宿区歌舞伎町 — JR新宿駅東口より徒歩5分</p>
 </section>
 
-<section>
-  <h2>RESERVE</h2>
-  <p><a href="[instagram.com](https://www.instagram.com/conceptcafe_46)" target="_blank">ご予約はこちらから</a></p>
+<!-- CTA -->
+<section id="reserve-cta" class="fadein" style="background:linear-gradient(160deg,var(--tiffany-mid),var(--tiffany-dark));text-align:center;color:white;padding:80px 24px;">
+  <h2 style="font-weight:300;letter-spacing:0.1em;">ご来店・ご予約はこちらから</h2>
+  <p style="opacity:.8;margin-bottom:38px;">Reserve your seat at NUMBER46</p>
+  <a href="[instagram.com](https://www.instagram.com/conceptcafe_46)" target="_blank" class="btn-main" style="background:white;color:var(--tiffany-dark);box-shadow:0 0 20px rgba(255,255,255,0.3);">予約する</a>
 </section>
 
 <footer>© NUMBER46 2024</footer>
 
 <script>
 function closeAgeGate(){
-  const a = document.getElementById("age-gate");
-  if(a) a.style.display="none";
+  document.getElementById("age-gate").style.display="none";
 }
+const els=document.querySelectorAll('.fadein');
+const io=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting)t.target.classList.add('show');});});
+els.forEach(x=>io.observe(x));
 </script>
 
 </body>
