@@ -1,741 +1,499 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>NUMBER46 | コンセプトカフェ 新宿歌舞伎町</title>
-
-<!-- フォント -->
-<link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)" />
-<link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin />
-<link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500&display=swap)" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NUMBER46 | 清楚系アイドルコンセプトカフェ</title>
 
 <style>
-/* ===============================
-   ROOT（基本色・影・角丸）
-================================ */
+
+/* ------------------------------
+   テーマカラー設定
+------------------------------ */
 :root {
-  --tiffany: #7dcfca;
-  --tiffany-dark: #3da8a1;
-  --tiffany-light: #a8ddd9;
-  --tiffany-ultra: #eefcfa;
-  --pink-light: #fdebf2;
-  --lavender-light: #f3f0fc;
-  --mint-light: #e8f8f5;
-
-  --text-dark: #1c2b2a;
-  --text-mid: #3d5654;
-  --text-light: #7a9c99;
-
-  --shadow-soft: 0 6px 18px rgba(0,0,0,0.08);
-  --shadow-card: 0 8px 30px rgba(0,0,0,0.10);
-  --shadow-strong: 0 10px 40px rgba(0,0,0,0.18);
-
-  --radius: 18px;
-  --radius-lg: 26px;
+  --tiffany: #7FDBD4;
+  --tiffany-light: #CFF7F5;
+  --tiffany-dark: #50C5BB;
+  --white: #ffffff;
+  --gray-text: #444;
+  --soft-gray: #f8f8f8;
+  --deep: #1B1B1B;
+  --accent: #88ebe6;
 }
 
-/* ===============================
-   BASE RESET
-================================ */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html { scroll-behavior: smooth; }
+/* ------------------------------
+   全体
+------------------------------ */
 body {
-  font-family: 'Noto Serif JP', serif;
-  background: #ffffff;
-  color: var(--text-dark);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  background: var(--white);
+  color: var(--gray-text);
+  scroll-behavior: smooth;
 }
 
-/* ===============================
-   GLOBAL UTILITIES
-================================ */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 section {
-  padding: 80px 22px;
+  padding: 80px 0;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  color: var(--deep);
+}
+
+/* ------------------------------
+   ヘッダー
+------------------------------ */
+header {
   width: 100%;
-  max-width: 900px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #eee;
+}
+
+.header-inner {
+  max-width: 1100px;
   margin: auto;
-}
-.section-label {
-  font-size: 0.72rem;
-  letter-spacing: 0.3em;
-  color: var(--tiffany-dark);
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.section-title {
-  font-size: clamp(1.8rem, 6vw, 2.5rem);
-  font-family: 'Noto Serif JP', serif;
-  font-weight: 300;
-  color: var(--text-dark);
-  margin-bottom: 20px;
-}
-.section-desc {
-  font-size: 0.92rem;
-  color: var(--text-mid);
-  line-height: 2;
-  letter-spacing: 0.04em;
-  margin-bottom: 30px;
-}
-
-/* ===============================
-   AGE GATE（スクショ忠実再現）
-================================ */
-#age-gate {
-  position: fixed;
-  inset: 0;
-  background: rgba(20, 40, 38, 0.65);
-  backdrop-filter: blur(16px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-.age-card {
-  background: white;
-  width: 88%;
-  max-width: 420px;
-  padding: 46px 34px 40px;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 18px 60px rgba(0,0,0,0.28);
-  text-align: center;
-}
-.age-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.2rem;
-  color: var(--text-dark);
-  letter-spacing: 0.08em;
-  margin-bottom: 6px;
-}
-.age-logo span {
-  color: var(--tiffany);
-}
-.age-sub {
-  color: var(--text-light);
-  font-size: 0.82rem;
-  letter-spacing: 0.28em;
-  margin-bottom: 28px;
-}
-.age-text {
-  font-size: 0.95rem;
-  color: var(--text-mid);
-  line-height: 1.9;
-  margin-bottom: 36px;
-}
-.age-btns {
-  display: flex;
-  gap: 14px;
-}
-.age-btns button {
-  flex: 1;
-  padding: 15px 0;
-  border-radius: 50px;
-  border: none;
-  font-size: 0.92rem;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  transition: 0.25s;
-}
-.age-yes {
-  background: var(--tiffany);
-  color: white;
-}
-.age-yes:hover {
-  background: var(--tiffany-dark);
-  transform: translateY(-2px);
-}
-.age-no {
-  background: #efefef;
-  color: #777;
-}
-.age-no:hover {
-  background: #e5e5e5;
-}
-
-/* ===============================
-   NAV（スクショ100%再現）
-================================ */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 22px;
-  background: rgba(255,255,255,0.92);
-  border-bottom: 1px solid rgba(125,207,202,0.28);
-  backdrop-filter: blur(18px);
-  z-index: 1000;
-}
-.nav-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.7rem;
-  color: var(--text-dark);
-  letter-spacing: 0.08em;
-  text-decoration: none;
-}
-.nav-logo span { color: var(--tiffany); }
-
-.nav-btn {
-  background: var(--tiffany);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  transition: 0.25s;
-}
-.nav-btn:hover {
-  background: var(--tiffany-dark);
-  transform: translateY(-2px);
+  padding: 14px 20px;
 }
 
-/* ===============================
-   HERO（王道清楚ここに爆誕）
-================================ */
-#hero {
-  min-height: 100vh;
-  padding-top: 100px;
-  padding-bottom: 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--deep);
+}
+
+header nav a {
+  margin-left: 22px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+header nav a:hover {
+  color: var(--tiffany);
+}
+
+/* ------------------------------
+   メインビジュアル
+------------------------------ */
+.hero {
+  background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.95)),
+              url('img/store1.jpg') center/cover no-repeat;
+  padding: 200px 20px 160px;
   text-align: center;
-  background: linear-gradient(180deg, #ffffff 0%, #f4faf9 50%, #eaf9f7 100%);
-}
-.hero-logo {
-  width: 200px;
-  height: 200px;
-  background: white;
-  border-radius: 24px;
-  box-shadow: var(--shadow-card);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 34px;
-}
-.hero-catch {
-  font-size: clamp(1.8rem, 6vw, 2.6rem);
-  font-family: 'Noto Serif JP';
-  letter-spacing: 0.15em;
-  margin-bottom: 28px;
 }
 
-/* ボタン */
+.hero h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
 .btn-main {
   display: inline-block;
   background: var(--tiffany);
-  color: white;
-  padding: 16px 34px;
-  border-radius: 50px;
-  text-decoration: none;
-  letter-spacing: .1em;
-  font-size: .92rem;
-  box-shadow: var(--shadow-card);
+  padding: 14px 28px;
+  border-radius: 35px;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: 0.3s;
 }
+
 .btn-main:hover {
   background: var(--tiffany-dark);
-  transform: translateY(-2px);
-}
-/* ===================================================
-   CONCEPT（スクショ忠実再現）
-=================================================== */
-#concept {
-  background: #ffffff;
-  padding-top: 80px;
-}
-.concept-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin: 36px auto 46px;
-  max-width: 750px;
-}
-.concept-grid img {
-  width: 100%;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
-}
-@media(max-width: 640px) {
-  .concept-grid { grid-template-columns: 1fr; }
 }
 
-/* ===================================================
-   PLAN（スクショ100%再現）
-=================================================== */
+/* ------------------------------
+   コンセプト
+------------------------------ */
+.concept {
+  text-align: center;
+  max-width: 900px;
+  margin: auto;
+}
+
+.concept h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+/* ------------------------------
+   プラン
+------------------------------ */
 #plan {
-  background: #ffffff;
-  padding-top: 80px;
+  background: var(--soft-gray);
 }
 
-.plan-list {
+.plan-container {
+  max-width: 1050px;
+  margin: auto;
   display: flex;
-  gap: 26px;
   justify-content: center;
+  gap: 30px;
   flex-wrap: wrap;
-  margin-top: 36px;
 }
 
 .plan-card {
   width: 320px;
-  padding: 34px 24px 40px;
-  border-radius: var(--radius-lg);
-  background: white;
-  box-shadow: var(--shadow-card);
-  text-align: left;
+  background: var(--white);
+  border-radius: 22px;
+  padding: 35px 25px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.07);
+  border: 3px solid var(--tiffany-light);
   position: relative;
-}
-
-.plan-card:nth-child(1) {
-  background: linear-gradient(135deg, #ecfaf8, #dff8f5);
-}
-
-.plan-card:nth-child(2) {
-  background: linear-gradient(135deg, #fef4f7, #fdebf2);
-}
-
-.plan-label {
-  display: inline-block;
-  background: rgba(255,255,255,0.7);
-  padding: 6px 14px;
-  font-size: 0.78rem;
-  letter-spacing: 0.15em;
-  border-radius: 50px;
-  margin-bottom: 18px;
-  color: var(--text-mid);
-}
-
-.plan-name {
-  font-size: 1.35rem;
-  margin-bottom: 6px;
-  font-weight: 400;
-}
-
-.plan-sub {
-  font-size: 0.88rem;
-  color: var(--text-mid);
-  margin-bottom: 20px;
-}
-
-.plan-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.6rem;
-  margin-bottom: 12px;
-}
-
-.plan-items li {
-  font-size: 0.88rem;
-  color: var(--text-mid);
-  line-height: 1.8;
-  list-style: none;
-  margin-left: 0;
-  margin-bottom: 6px;
-}
-
-/* ===================================================
-   RULES（スクショ忠実）
-=================================================== */
-#rules {
-  background: #f3fbfa;
-  padding-top: 80px;
-}
-.rule-list {
-  max-width: 760px;
-  margin: auto;
-  margin-top: 32px;
-}
-.rule-item {
-  background: #ffffff;
-  padding: 18px 20px;
-  border-radius: var(--radius);
-  font-size: 0.9rem;
-  color: var(--text-mid);
-  box-shadow: var(--shadow-soft);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* ===================================================
-   SNS（スクショ忠実：ピンク／ミント／ラベンダー）
-=================================================== */
-#sns {
-  background: #ffffff;
-  padding-top: 80px;
-}
-
-.sns-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 22px;
-  margin-top: 36px;
-}
-
-.sns-card {
-  width: 330px;
-  border-radius: var(--radius-lg);
-  padding: 30px 26px;
-  text-align: left;
-  text-decoration: none;
-  color: var(--text-dark);
-  box-shadow: var(--shadow-card);
   transition: 0.3s;
 }
 
-.sns-card:hover { transform: translateY(-4px); }
-
-.sns-ig {
-  background: linear-gradient(135deg, #fff0f4, #fde9f0);
+.plan-card:hover {
+  transform: translateY(-4px);
 }
 
-.sns-tw {
-  background: linear-gradient(135deg, #e6f9f8, #f9ffff);
+.plan-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 12px;
+  color: var(--deep);
 }
 
-.sns-tk {
-  background: linear-gradient(135deg, #f6f6fd, #ededf7);
-}
-
-.sns-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
-  margin-bottom: 4px;
-  letter-spacing: 0.05em;
-}
-.sns-handle { 
-  color: var(--text-light);
-  font-size: .82rem;
-  margin-bottom: 16px;
-}
-.sns-body {
-  color: var(--text-mid);
-  font-size: .92rem;
-  line-height: 1.8;
-}
-.sns-body span {
-  display: inline-block;
-  margin-top: 12px;
+.plan-price {
+  font-size: 34px;
+  font-weight: 600;
+  text-align: center;
+  margin: 20px 0;
   color: var(--tiffany-dark);
-  font-size: .85rem;
-  font-weight: 500;
 }
 
-/* ===================================================
-   ACCESS（スクショ忠実）
-=================================================== */
-#access {
-  background: #f3fbfa;
-  padding-top: 80px;
-}
-
-.access-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  padding: 30px 24px;
-  max-width: 760px;
-  margin: 0 auto;
-  box-shadow: var(--shadow-card);
-  text-align: left;
-}
-
-.access-card h3 {
-  font-size: 1rem;
-  color: var(--tiffany-dark);
-  margin-bottom: 6px;
-}
-.access-card p {
-  font-size: 0.92rem;
-  color: var(--text-mid);
-  margin-bottom: 14px;
-}
-
-.map-wrapper {
+.plan-detail {
   margin-top: 20px;
-}
-.map-wrapper iframe {
-  width: 100%;
-  height: 300px;
-  border: none;
-  border-radius: var(--radius);
+  line-height: 1.7;
+  font-size: 15px;
 }
 
-/* ===================================================
-   RECRUIT（スクショ忠実）
-=================================================== */
-#recruit {
-  background: #ffffff;
-  padding-top: 80px;
+/* ------------------------------
+   ルール
+------------------------------ */
+.rules-container {
+  max-width: 800px;
+  margin: auto;
 }
 
-.recruit-box {
-  max-width: 700px;
-  margin: 0 auto;
-  background: #e5faf7;
-  padding: 44px 30px;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
+.rule-box {
+  padding: 20px;
+  margin: 12px 0;
+  background: var(--tiffany-light);
+  border-left: 5px solid var(--tiffany-dark);
+  border-radius: 6px;
 }
 
-.recruit-box p {
-  font-size: 0.95rem;
-  color: var(--text-mid);
-  margin-bottom: 20px;
-  line-height: 2;
+/* ------------------------------
+   SNS
+------------------------------ */
+.sns-wrapper {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.recruit-btn {
+.sns-card {
+  width: 300px;
+  background: var(--white);
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  border: 2px solid var(--tiffany);
+  transition: 0.3s;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.sns-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--tiffany-dark);
+}
+
+.sns-card h3 {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.sns-btn {
   display: inline-block;
-  margin-top: 6px;
+  padding: 12px 20px;
+  border-radius: 30px;
   background: var(--tiffany);
   color: white;
-  padding: 14px 30px;
-  text-decoration: none;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
-  box-shadow: var(--shadow-soft);
-  transition: 0.2s;
-}
-.recruit-btn:hover {
-  background: var(--tiffany-dark);
-  transform: translateY(-2px);
+  margin-top: 18px;
+  font-weight: 600;
+  transition: 0.3s;
+  font-size: 15px;
 }
 
-/* ===================================================
-   FOOTER（スクショ忠実）
-=================================================== */
-footer {
-  background: #1c2b2a;
-  color: #d0d0d0;
+.sns-btn:hover {
+  background: var(--tiffany-dark);
+}
+
+/* ------------------------------
+   アクセス
+------------------------------ */
+.access-container {
+  max-width: 900px;
+  margin: auto;
   text-align: center;
-  padding: 50px 20px;
-  font-size: 0.78rem;
+}
+
+.map {
+  margin-top: 30px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+/* ------------------------------
+   フッター
+------------------------------ */
+footer {
+  background: var(--deep);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
   margin-top: 80px;
 }
+
 footer a {
   color: var(--tiffany);
-  text-decoration: none;
-  margin: 0 8px;
 }
-footer a:hover {
-  text-decoration: underline;
+
+
+/* ------------------------------
+   スクロール誘導ボタン
+------------------------------ */
+.scroll-btn {
+  margin-top: 40px;
+  display: inline-block;
+  background: var(--accent);
+  padding: 12px 26px;
+  color: white;
+  border-radius: 30px;
+  font-weight: 600;
+  box-shadow: 0 5px 14px rgba(0,0,0,0.12);
+  transition: 0.3s;
 }
+
+.scroll-btn:hover {
+  background: var(--tiffany-dark);
+}
+
 </style>
+
+<script>
+// 「プランを見る」ボタン → プランへスクロール
+function scrollToPlan() {
+  document.getElementById("plan").scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
 </head>
 <body>
 
-<!-- ===================================================
-     AGE GATE（年齢確認）
-=================================================== -->
-<div id="age-gate">
-  <div class="age-card">
-    <div class="age-logo">NUMBER<span>46</span></div>
-    <div class="age-sub">よんろくっ ｜ 新宿歌舞伎町</div>
-    <p class="age-text">
-      当店のウェブサイトをご覧いただくには、<br>
-      18歳以上である必要があります。<br>
-      あなたは18歳以上ですか？
-    </p>
-    <div class="age-btns">
-      <button class="age-yes" onclick="closeAgeGate()">はい、18歳以上です</button>
-      <button class="age-no" onclick="location.href='[google.com](https://www.google.com)'">いいえ</button>
-    </div>
+<!-- ==========================
+      HEADER
+=========================== -->
+<header>
+  <div class="header-inner">
+    <div class="logo">NUMBER46</div>
+    <nav>
+      <a href="#concept">CONCEPT</a>
+      <a href="#plan">PLAN</a>
+      <a href="#rules">RULES</a>
+      <a href="#sns">SNS</a>
+      <a href="#access">ACCESS</a>
+      <a class="btn-main" href="[instagram.com](https://instagram.com/conceptcafe_46)" target="_blank">予約する</a>
+    </nav>
   </div>
-</div>
+</header>
 
-<!-- ===================================================
-     NAV（上部ナビ）
-=================================================== -->
-<nav>
-  <a href="#hero" class="nav-logo">NUMBER<span>46</span></a>
-  <a href="#plan" class="nav-btn">予約する</a>
-</nav>
 
-<!-- ===================================================
-     HERO（王道清楚ここに爆誕）
-=================================================== -->
-<section id="hero">
-  <div class="hero-logo">
-    <!-- ※ロゴ画像を後で差し替えるならここにimgを入れる -->
-    <img src="[placehold.co](https://placehold.co/160x160?text=LOGO)" 
-         alt="NUMBER46ロゴ" 
-         style="width:70%;height:auto;object-fit:contain;">
-  </div>
-
-  <h1 class="hero-catch">王道清楚ここに爆誕</h1>
-
-  <a href="#plan" class="btn-main">プランを見る</a>
+<!-- ==========================
+      HERO
+=========================== -->
+<section class="hero">
+  <h1>NUMBER46 - よんろくっ</h1>
+  <p>清楚で特別な時間を、あなたへ。</p>
+  <a onclick="scrollToPlan()" class="ScrollButton btn-main">プランを見る</a>
 </section>
 
-<!-- ===================================================
-     CONCEPT（あなたの推しに会いに来てください）
-=================================================== -->
-<section id="concept">
-  <div class="section-label">CONCEPT</div>
-  <h2 class="section-title">あなたの推しに、会いに来てください。</h2>
 
-  <div class="concept-grid">
-    <img src="[placehold.co](https://placehold.co/400x300/dafff8/333?text=PHOTO)" alt="concept photo 1">
-    <img src="[placehold.co](https://placehold.co/400x300/fff0f4/333?text=PHOTO)" alt="concept photo 2">
-  </div>
-
-  <p class="section-desc">
-    NUMBER46は、新宿歌舞伎町に佇む清楚系コンセプトカフェ。<br>
-    まるでアイドルのような世界観と、透明感あふれる空間で、<br>
-    推しとの特別な時間をごゆっくりお楽しみください。
+<!-- ==========================
+      CONCEPT
+=========================== -->
+<section id="concept" class="concept">
+  <h2>あなたの推しに、会いに来てください。</h2>
+  <p>
+    NUMBER46は、新宿歌舞伎町に佇む清楚系アイドルコンセプトカフェ。  
+    個性豊かなキャストたちが、あなたとの特別なひとときをお待ちしています。  
+    日常から少し離れて、アイドルのようなきらめきの空間をお楽しみください。
   </p>
+
+  <a class="scroll-btn" onclick="scrollToPlan()">プランを見る</a>
 </section>
 
-<!-- ===================================================
-     PLAN（飲み放題プラン ＆ ノーマルプラン）
-=================================================== -->
+
+<!-- ==========================
+      PLAN
+=========================== -->
 <section id="plan">
-  <div class="section-label">PLAN</div>
-  <h2 class="section-title">ご来店プラン</h2>
+  <h2 style="text-align:center; margin-bottom:40px;">ご来店プラン</h2>
 
-  <div class="plan-list">
+  <div class="plan-container">
 
-    <!-- PREMIUM PLAN -->
+    <!-- 飲み放題 -->
     <div class="plan-card">
-      <div class="plan-label">✦ PREMIUM PLAN</div>
-      <div class="plan-name">飲み放題プラン</div>
-      <div class="plan-sub">シャンパン込みの飲み放題で特別な夜を</div>
-      <div class="plan-price">¥10,000</div>
-      <ul class="plan-items">
-        <li>30分</li>
-        <li>シャンパン飲み放題</li>
-        <li>ソフトドリンク・カクテル含む</li>
-        <li>延長応相談</li>
-      </ul>
+      <div class="plan-title">飲み放題プラン</div>
+      <div class="plan-price">¥10,000 / 30分</div>
+      <div class="plan-detail">
+        ・シャンパン飲み放題  
+        ・ソフトドリンク・カクテル  
+        ・30分制（延長応相談）
+      </div>
     </div>
 
-    <!-- NORMAL PLAN -->
+    <!-- ノーマル -->
     <div class="plan-card">
-      <div class="plan-label">♡ NORMAL PLAN</div>
-      <div class="plan-name">ノーマルプラン</div>
-      <div class="plan-sub">気軽に立ち寄れる1ドリンク制</div>
-      <div class="plan-price">¥640</div>
-      <ul class="plan-items">
-        <li>30分チャージ</li>
-        <li>1ドリンク制</li>
-        <li>30分ごとに追加チャージ</li>
-      </ul>
+      <div class="plan-title">ノーマルプラン</div>
+      <div class="plan-price">¥640 / 30分</div>
+      <div class="plan-detail">
+        ・1ドリンク制  
+        ・30分チャージ¥640  
+        ・30分ごとに追加チャージ
+      </div>
     </div>
 
   </div>
 </section>
-<!-- ===================================================
-     SNS（Instagram／X／TikTok）
-=================================================== -->
-<section id="sns">
-  <div class="section-label">SNS</div>
-  <h2 class="section-title">Follow Us</h2>
 
-  <div class="sns-list">
+
+<!-- ==========================
+      RULES
+=========================== -->
+<section id="rules">
+  <h2 style="text-align:center;">ご来店ルール</h2>
+  <div class="rules-container">
+
+    <p style="text-align:center; margin-bottom: 30px;">すべてのお客様・キャストが安心して過ごせるよう、ご協力をお願いします。</p>
+
+    <div class="rule-box">・キャストに連絡先を聞く行為</div>
+    <div class="rule-box">・キャストに触れるなどの行為</div>
+    <div class="rule-box">・スカウト・引き抜き行為</div>
+    <div class="rule-box">・18歳未満の方の入店</div>
+    <div class="rule-box">・暴力団関係者の方の入店</div>
+    <div class="rule-box">・未成年者・運転者への酒類提供</div>
+    <div class="rule-box">・入り待ち・出待ち行為</div>
+    <div class="rule-box">・泥酔状態での入店</div>
+  </div>
+</section>
+
+
+<!-- ==========================
+      SNS
+=========================== -->
+<section id="sns">
+  <h2 style="text-align:center;">Follow Us</h2>
+
+  <div class="sns-wrapper">
 
     <!-- Instagram -->
-    <a href="[instagram.com](https://www.instagram.com/conceptcafe_46)" target="_blank" class="sns-card sns-ig">
-      <div class="sns-title">Instagram</div>
-      <div class="sns-handle">@conceptcafe_46</div>
-      <div class="sns-body">
-        キャストの日常や店内の雰囲気をフォト・ストーリーズで毎日更新。<br>
-        <span>フォロー ＆ DM予約 →</span>
-      </div>
-    </a>
+    <div class="sns-card" style="background:#fff7fb;border-color:#F8A2D8;">
+      <h3>Instagram</h3>
+      <p>@conceptcafe_46</p>
+      <p>店内の雰囲気・キャストの日常を毎日更新。あなたの“推し活”をもっと楽しく。</p>
+      <a class="sns-btn" href="[instagram.com](https://instagram.com/conceptcafe_46)" target="_blank">写真を見る</a>
+    </div>
 
     <!-- X -->
-    <a href="[twitter.com](https://twitter.com/46_KABUKI)" target="_blank" class="sns-card sns-tw">
-      <div class="sns-title">X（旧 Twitter）</div>
-      <div class="sns-handle">@46_KABUKI</div>
-      <div class="sns-body">
-        本日の出勤キャスト情報をチェック。<br>
-        <span>推しの出勤日を見逃さないために →</span>
-      </div>
-    </a>
+    <div class="sns-card" style="background:#f6feff;border-color:#7FDBD4;">
+      <h3>X（Twitter）</h3>
+      <p>@46_KABUKI</p>
+      <p>本日の出勤キャストをチェックして、推しの出演日を逃さない。</p>
+      <a class="sns-btn" href="[x.com](https://x.com/46_KABUKI)" target="_blank">出勤を見る</a>
+    </div>
 
     <!-- TikTok -->
-    <a href="[tiktok.com](https://www.tiktok.com/@conceptcafe_46)" target="_blank" class="sns-card sns-tk">
-      <div class="sns-title">TikTok</div>
-      <div class="sns-handle">@conceptcafe_46</div>
-      <div class="sns-body">
-        来てみたいけど雰囲気が気になる方へ。店内の空気感をショートで体験。<br>
-        <span>動画を見てみる →</span>
-      </div>
-    </a>
+    <div class="sns-card" style="background:#fff8ff;border-color:#CBA3FF;">
+      <h3>TikTok</h3>
+      <p>@conceptcafe_46</p>
+      <p>動画で店内の空気感を体験。来店前に“雰囲気チェック”。</p>
+      <a class="sns-btn" href="[tiktok.com](https://www.tiktok.com/@conceptcafe_46)" target="_blank">動画を見る</a>
+    </div>
 
   </div>
 </section>
 
-<!-- ===================================================
-     ACCESS
-=================================================== -->
+
+<!-- ==========================
+      ACCESS
+=========================== -->
 <section id="access">
-  <div class="section-label">ACCESS</div>
-  <h2 class="section-title">アクセス</h2>
+  <h2 style="text-align:center;">ACCESS</h2>
 
-  <div class="access-card">
-    <h3>住所</h3>
-    <p>〒160‑0021<br>東京都新宿区歌舞伎町 2‑39‑8 ダーマビル 6 階</p>
-    <h3>電話番号</h3>
-    <p>03 ‑ 6457 ‑ 6185</p>
+  <div class="access-container">
+    <p>〒160-0021<br>新宿区歌舞伎町2-39-8 ダーマビル 6階</p>
+    <p>TEL：03-6457-6185</p>
 
-    <div class="map-wrapper">
-      <iframe
-        src="[google.com](https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.1868512056585!2d139.69952737649356!3d35.697019272582175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d6ad390bc09%3A0xd7d6f3d2c40a6eeb!2z44Kz44Oz44K744OX44OI44Kr44OV44KnIOODiuODs-ODkOODvOODleOCqeODvOODhuOCo-ODvOOCt-ODg-OCr-OCuQ!5e0!3m2!1sja!2sjp!4v1772228066907!5m2!1sja!2sjp)"
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="map">
+      <iframe src="[google.com](https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.1868512056585!2d139.69952737649356!3d35.697019272582175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d6ad390bc09%3A0xd7d6f3d2c40a6eeb!2z44Kz44Oz44K744OX44OI44Kr44OV44KnIE5VTUJFUjQ2IOODiuODs-ODkOODvOODleOCqeODvOODhuOCo-ODvOOCt-ODg-OCr-OCuQ!5e0!3m2!1sja!2sjp!4v1772228066907!5m2!1sja!2sjp)"
+              width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </div>
 </section>
 
-<!-- ===================================================
-     RECRUIT
-=================================================== -->
-<section id="recruit">
-  <div class="section-label">RECRUIT</div>
-  <h2 class="section-title">採用情報</h2>
 
-  <div class="recruit-box">
-    <p>
-      NUMBER46では、一緒に働いてくれるキャストを随時募集しています。<br>
-      詳しい勤務条件・待遇はInstagramのDMにてお気軽にお問い合わせください。
-    </p>
-    <a href="[instagram.com](https://www.instagram.com/conceptcafe_46)" target="_blank" class="recruit-btn">
-      採用についてDMで問い合わせる
-    </a>
-  </div>
-</section>
-
-<!-- ===================================================
-     FOOTER
-=================================================== -->
+<!-- ==========================
+      FOOTER
+=========================== -->
 <footer>
-  <p>
-    <a href="#">プライバシーポリシー</a>｜
-    <a href="#">利用規約</a>
-  </p>
-  <p>© NUMBER46 All Rights Reserved.</p>
+  <p><a href="#privacy">プライバシーポリシー</a> ／ <a href="#terms">利用規約</a></p>
+  <p>© NUMBER46</p>
 </footer>
 
-<!-- ===================================================
-     SCRIPT
-=================================================== -->
-<script>
-function closeAgeGate(){
-  const gate = document.getElementById("age-gate");
-  gate.style.display = "none";
-}
-</script>
+
+<!-- ==========================
+      PRIVACY + TERMS（下部に配置）
+=========================== -->
+<section id="privacy" style="padding:60px 20px;">
+  <h2>プライバシーポリシー</h2>
+  <p>
+    当店は、お客様の個人情報を適切に管理し、法令に基づき安全に取り扱います。  
+    第三者への提供は、法令に基づく場合を除き一切行いません。
+  </p>
+</section>
+
+<section id="terms" style="padding:60px 20px;">
+  <h2>利用規約</h2>
+  <p>
+    本サイトおよび店舗サービスの利用にあたっては、法令遵守および公序良俗に反する行動を禁止します。  
+    ルール違反が確認された場合、入店拒否・退店をお願いする場合があります。
+  </p>
+</section>
+
+
 </body>
 </html>
