@@ -595,6 +595,13 @@ footer{background:var(–text-dark);padding:52px 24px 36px;}
 </div>
 </div>
 
+// カスタムカーソル
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+cursor.style.left = e.clientX + 'px';
+cursor.style.top = e.clientY + 'px';
+});
+
 // タップ/クリックでキラキラエフェクト
 const colors = ['#7DCFCA','#5BBFB9','#A8DDD9','#F9D7E3','#FFD700','#E4F5F4','#ffffff'];
 const shapes = ['✦','✧','★','☆','◆','✿','❋','✵','⚡'];
@@ -630,23 +637,6 @@ document.addEventListener('touchstart', e => {
 const t = e.touches[0];
 createSparkle(t.clientX, t.clientY);
 }, {passive: true});
-
-// 常時キラキラ背景
-const sparkBg = document.getElementById('sparkle-bg');
-for (let i = 0; i < 60; i++) {
-const s = document.createElement('div');
-s.className = 'sparkle-star';
-s.style.cssText = `
-left:${Math.random()*100}%;
-top:${Math.random()*100}%;
---dur:${2 + Math.random()*4}s;
-animation-delay:${Math.random()*4}s;
-width:${2+Math.random()*4}px;
-height:${2+Math.random()*4}px;
-background:${colors[Math.floor(Math.random()*colors.length)]};
-`;
-sparkBg.appendChild(s);
-}
 
 // ヒーロー浮遊キラキラ
 const hero = document.getElementById('hero');
