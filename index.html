@@ -595,48 +595,5 @@ footer{background:var(–text-dark);padding:52px 24px 36px;}
 </div>
 </div>
 
-// タップ/クリックでキラキラエフェクト
-const colors = ['#7DCFCA','#5BBFB9','#A8DDD9','#F9D7E3','#FFD700','#E4F5F4','#ffffff'];
-const shapes = ['✦','✧','★','☆','◆','✿','❋','✵','⚡'];
-
-function createSparkle(x, y) {
-const container = document.getElementById('particles-container');
-const count = 12 + Math.floor(Math.random() * 8);
-for (let i = 0; i < count; i++) {
-const p = document.createElement('div');
-p.className = 'particle';
-const angle = (Math.PI * 2 * i) / count + Math.random() * 0.5;
-const dist = 40 + Math.random() * 80;
-const tx = Math.cos(angle) * dist;
-const ty = Math.sin(angle) * dist;
-const color = colors[Math.floor(Math.random() * colors.length)];
-const shape = shapes[Math.floor(Math.random() * shapes.length)];
-const size = 10 + Math.random() * 16;
-p.style.cssText = `
-left:${x}px;top:${y}px;
---tx:${tx}px;--ty:${ty}px;
-color:${color};font-size:${size}px;
-animation-duration:${0.8 + Math.random() * 0.8}s;
-animation-delay:${Math.random() * 0.1}s;
-`;
-p.textContent = shape;
-container.appendChild(p);
-setTimeout(() => p.remove(), 1600);
-}
-}
-
-// モーダル
-function openModal(t) { document.getElementById('modal-'+t).classList.add('on'); document.body.style.overflow='hidden'; }
-function closeModal(t) { document.getElementById('modal-'+t).classList.remove('on'); document.body.style.overflow=''; }
-
-// フェードイン
-const obs = new IntersectionObserver((entries) => {
-entries.forEach((e,i) => {
-if(e.isIntersecting) setTimeout(()=>e.target.classList.add('show'), i*55);
-});
-}, {threshold:0.07, rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.fi').forEach(el => obs.observe(el));
-</script>
-
 </body>
 </html>
