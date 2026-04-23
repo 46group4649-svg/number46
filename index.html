@@ -595,53 +595,6 @@ footer{background:var(–text-dark);padding:52px 24px 36px;}
 </div>
 </div>
 
-<script>
-// BGM
-const bgm = document.getElementById('bgm');
-const iconPlay = document.getElementById('bgm-icon-play');
-const iconPause = document.getElementById('bgm-icon-pause');
-let bgmPlaying = false;
-
-function toggleBGM() {
-if (bgmPlaying) {
-bgm.pause();
-iconPlay.style.display = 'block';
-iconPause.style.display = 'none';
-bgmPlaying = false;
-} else {
-bgm.play().catch(()=>{});
-iconPlay.style.display = 'none';
-iconPause.style.display = 'block';
-bgmPlaying = true;
-}
-}
-
-// 年齢確認後にBGM自動再生試みる
-function closeAgeGate() {
-const g = document.getElementById('age-gate');
-g.style.opacity = '0';
-setTimeout(() => { g.style.display = 'none'; }, 500);
-bgm.volume = 0;
-bgm.play().then(() => {
-bgmPlaying = true;
-iconPlay.style.display = 'none';
-iconPause.style.display = 'block';
-let vol = 0;
-const fade = setInterval(() => {
-vol = Math.min(vol + 0.04, 1);
-bgm.volume = vol;
-if (vol >= 1) clearInterval(fade);
-}, 100);
-}).catch(() => {});
-}
-
-// カスタムカーソル
-const cursor = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
-cursor.style.left = e.clientX + 'px';
-cursor.style.top = e.clientY + 'px';
-});
-
 // タップ/クリックでキラキラエフェクト
 const colors = ['#7DCFCA','#5BBFB9','#A8DDD9','#F9D7E3','#FFD700','#E4F5F4','#ffffff'];
 const shapes = ['✦','✧','★','☆','◆','✿','❋','✵','⚡'];
