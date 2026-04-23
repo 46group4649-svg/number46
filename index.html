@@ -595,13 +595,6 @@ footer{background:var(–text-dark);padding:52px 24px 36px;}
 </div>
 </div>
 
-// カスタムカーソル
-const cursor = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
-cursor.style.left = e.clientX + 'px';
-cursor.style.top = e.clientY + 'px';
-});
-
 // タップ/クリックでキラキラエフェクト
 const colors = ['#7DCFCA','#5BBFB9','#A8DDD9','#F9D7E3','#FFD700','#E4F5F4','#ffffff'];
 const shapes = ['✦','✧','★','☆','◆','✿','❋','✵','⚡'];
@@ -630,32 +623,6 @@ p.textContent = shape;
 container.appendChild(p);
 setTimeout(() => p.remove(), 1600);
 }
-}
-
-document.addEventListener('click', e => createSparkle(e.clientX, e.clientY));
-document.addEventListener('touchstart', e => {
-const t = e.touches[0];
-createSparkle(t.clientX, t.clientY);
-}, {passive: true});
-
-// ヒーロー浮遊キラキラ
-const hero = document.getElementById('hero');
-for (let i = 0; i < 20; i++) {
-const s = document.createElement('div');
-s.className = 'float-star';
-const tx = -50 + Math.random()*100;
-const ty = -100 - Math.random()*100;
-s.style.cssText = `
-left:${Math.random()*100}%;
-top:${50+Math.random()*50}%;
---dur:${4+Math.random()*6}s;
---tx:${tx}px;--ty:${ty}px;
---size:${12+Math.random()*14}px;
-animation-delay:${Math.random()*6}s;
-color:${colors[Math.floor(Math.random()*colors.length)]};
-`;
-s.textContent = shapes[Math.floor(Math.random()*shapes.length)];
-hero.appendChild(s);
 }
 
 // モーダル
